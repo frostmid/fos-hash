@@ -1,7 +1,8 @@
-var XXHash = require ('xxhash');
+var crypto = require ('crypto');
 
 module.exports = function (str) {
-	var hasher = new XXHash (0xCAFEBABE);
-	hasher.update (new Buffer (str));
-	return hasher.digest ();
+	return crypto
+		.createHash ('md5')
+		.update (str)
+		.digest ('hex');
 };
